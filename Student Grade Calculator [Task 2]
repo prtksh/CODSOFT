@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class GradeCalc{
+
+    public static void main(String args[]){
+
+        int n;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the number of subjects you have: ");
+        n = sc.nextInt();
+        int marks[] = new int[n];
+
+        System.out.println("Enter your marks: ");
+        
+        for(int i=0; i<n; i++){
+            marks[i]=sc.nextInt();
+        }
+
+        int sum = 0;
+
+        for(int i=0; i<n; i++){
+            sum = sum + marks[i];
+        }
+
+        System.out.println("Your total marks out of "+ n*100 +" are "+ sum);
+
+        int avgmarks = (sum/n);
+
+        System.out.println("Your average percentage is = "+ avgmarks);
+
+        if(avgmarks>=90 && avgmarks<=100){
+            System.out.println("Congrats, your grade is Outstanding [O].");
+        }else if(avgmarks>=80 && avgmarks <=89){
+            System.out.println("Congrats, your grade is Excellent [A+]");
+        }else if(avgmarks>=70 && avgmarks<=79){
+            System.out.println("Well done, your grade is Very Good [A]");
+        }else if(avgmarks>=60 && avgmarks <=69){
+            System.out.println("Well done, your grade is Good [B+]");
+        }else if(avgmarks>=50 && avgmarks <=59){
+            System.out.println("Do better, your grade is Average [B]");
+        }else if(avgmarks>=40 && avgmarks <=49){
+            System.out.println("Do better, your grade is Pass [C]");
+        }else if(avgmarks <40){
+            System.out.println("Your grade is Fail [F]");
+        }else{
+            System.out.println("Enter valid input.");
+        }
+    }
+}

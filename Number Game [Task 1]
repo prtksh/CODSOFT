@@ -1,0 +1,100 @@
+import java.util.*;
+
+public class NumberGame1{
+
+    public static void main(String args[]){
+        int replay =0, guessno, compguess;
+        int replaygame =0, roundsno=0;
+        int attemptno ;
+        char re, op, askre; 
+        int score;
+    
+        Random rand = new Random();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("--This is a game to guess the random number the computer guesses.--");
+        System.out.println("--Do you want to play?--");
+        op = sc.next().charAt(0);
+        if(op=='Y'||op=='y'){
+            replaygame=0;
+        }
+        else{
+            replaygame=1;
+        }
+        
+        
+        while(replaygame==0){
+            compguess = rand.nextInt(101) + 1;
+            attemptno =1;
+            roundsno++;
+            score = 100;
+            do{
+            
+            System.out.println("--Guess a number: ");
+            guessno = sc.nextInt();
+
+            if(guessno==compguess){
+                System.out.println("--Congratulations! You guessed the right number!--");
+                System.out.println("--It took you "+ attemptno +" attempts to guess it!--");
+                int attemptnomul = (attemptno*3)/2;
+                int finscore = score-attemptnomul;
+                System.out.println("--Your final score is "+ finscore+"--");
+                System.out.println("--Do you want to play another round?--");
+                askre = sc.next().charAt(0);
+                if(askre=='y'||askre=='Y'){
+                    break;
+                }
+                else{
+                    replaygame=1;
+                    break;
+
+                }
+
+            
+
+            }else if(guessno>compguess){
+                System.out.println("--The number you guessed is higher than the correct number!--");
+                System.out.println("--Do you want to try again? Y/N--");
+                re = sc.next().charAt(0);
+                if(re=='Y'|| re=='y'){
+                    replay = 0;
+                }
+                else{
+                    replaygame=1;
+                    break;
+                }
+                attemptno++;
+            }else if(guessno<compguess){
+                System.out.println("--The number you guessed is lower than the correct number!--");
+                System.out.println("--Do you want to try again? Y/N--");
+                re = sc.next().charAt(0);
+                if(re=='Y' || re=='y'){
+                    replay = 0;
+                }
+                else{
+                    replaygame=1;
+                    break;
+                }
+                attemptno++;
+            }else{
+                System.out.println("--Number out of bounds.--");
+                System.out.println("--Do you want to try again?--");
+                re = sc.next().charAt(0);
+                if(re=='Y'){
+                    replay = 0;
+                }
+                else{
+                    break;
+                }
+            }
+        }while(replay==0);
+
+
+        }
+        
+        System.out.println("--Thanks for playing!--");
+        System.out.println("--You played "+ roundsno + " round(s).--");
+        }
+
+    }
